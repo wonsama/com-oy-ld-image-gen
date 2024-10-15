@@ -128,3 +128,11 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# wonsama added
+package-lock.json
+data/imageData.xml
+data/*.html
+data/*.json
+data/*.xsl
+data/img/*.png
