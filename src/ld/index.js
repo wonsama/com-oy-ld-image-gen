@@ -1,8 +1,8 @@
-import { sendGet, sendPostFile } from "./util/postman.js";
+import { sendGet, sendPostFile } from "../util/postman.js";
 
-import { createLdXml } from "./util/xml.js";
+import { createLdXml } from "../util/xml.js";
 import fs from "fs";
-import { info } from "./util/logger.js";
+import { info } from "../util/logger.js";
 import sharp from "sharp";
 
 const TEST_TYPES = {
@@ -13,11 +13,13 @@ const TEST_TYPES = {
 };
 
 // SETTINGS
-const TEST_ARTICLE_IDS = process.env.PRODUCT_FILE_PATH;
-const TEST_XSL_FILE = process.env.XSL_FILE_PATH;
+const LD_INPUT_ROOT = process.env.LD_INPUT_ROOT;
+const LD_OUTPUT_ROOT = process.env.LD_OUTPUT_ROOT;
+const TEST_ARTICLE_IDS = `${LD_INPUT_ROOT}/${process.env.PRODUCT_FILE_PATH}`;
+const TEST_XSL_FILE = `${LD_INPUT_ROOT}/${process.env.XSL_FILE_PATH}`;
 const TEST_EXTRACT_KOR = TEST_TYPES[process.env.TEMPLATE_TYPE].KOR;
 const TEMP_STATION_CODE = process.env.STATION_ID;
-const TEMP_XML = "./data/imageData.xml";
+const TEMP_XML = `${LD_INPUT_ROOT}/imageData.xml`;
 const TEST_PNG_PREFIX = TEST_XSL_FILE.replace(".xsl", "").split("/").pop();
 const API_URL_ARTICLE = process.env.API_URL_ARTICLE;
 const API_URL_IMADE_GEN = process.env.API_URL_IMADE_GEN;
@@ -61,7 +63,7 @@ async function init() {
 
     // STEP 4. SAVE_IMAGE
     sharp(Buffer.from(res.image, "base64")).toFile(
-      `./data/img/${TEST_PNG_PREFIX}-${articleId}.png`
+      `${LD_OUTPUT_ROOT}/ld/img/${TEST_PNG_PREFIX}-${articleId}.png`
     );
     info(
       `save image ${TEST_PNG_PREFIX}-${articleId}.png - ${count}/${ARTICLE_IDS.length}`
@@ -76,7 +78,11 @@ async function init() {
     count++;
   }
   html.push(`</tbody></html>`);
-  fs.writeFileSync(`./data/${TEST_PNG_PREFIX}.html`, html.join("\n"), "utf-8");
+  fs.writeFileSync(
+    `${LD_OUTPUT_ROOT}/${TEST_PNG_PREFIX}.html`,
+    html.join("\n"),
+    "utf-8"
+  );
 
   info("test_ld_template - end");
 }

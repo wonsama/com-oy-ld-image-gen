@@ -1,6 +1,6 @@
 # com-oy-ld-image-gen
 
-ESL IMAGE GEN with LD
+ESL LD IMAGE 관련 프로젝트
 
 ## 1. VSCODE EXTENSION 설치
 
@@ -19,20 +19,32 @@ npm i
 > .env.example 파일을 복사하여 .env 파일을 생성 후 관련 설정 정보를 입력한다.
 
 ```bash
-cp .env.example .env
+# LD IMAGE 관련
+PRODUCT_FILE_PATH : 참조 상품목록 정보 파일 (json)
+XSL_FILE_PATH : 템플릿 설정 파일 (xsl)
+
+# IMAGE DIFF 관련
+N/A
 ```
 
 ## 4. 실행
 
 ```bash
-npm start
+# LD IMAGE 관련
+npm run ld
+
+# IMAGE DIFF 관련
+npm run diff
 ```
 
-## 4. 결과확인
-
-> Live Server를 사용하여 결과를 확인한다.
+## 5. 결과확인
 
 ```bash
-# 생성된 아래 파일에서 우클릭 후 Open with Live Server 선택
-/data/[XSL파일명].html
+# 아래 폴더에 생성 된 결과물을 확인한다
+
+## LD IMAGE 관련
+/output/ld/
+
+## IMAGE DIFF 관련
+/output/diff/
 ```
