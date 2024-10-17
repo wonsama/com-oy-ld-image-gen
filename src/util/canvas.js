@@ -2,7 +2,8 @@ import { debug } from "./logger.js";
 import sharp from "sharp";
 
 function toHex(r, g, b) {
-  return "#" + ((r << 16) | (g << 8) | b).toString(16);
+  const hex = ((r << 16) | (g << 8) | b).toString(16);
+  return hex === "#0" ? "#000000" : hex;
 }
 
 export async function cropImage(sourceFile, targetFile, extractInfo) {

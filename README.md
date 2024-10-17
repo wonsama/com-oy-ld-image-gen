@@ -31,9 +31,9 @@ N/A
 
 ```bash
 # LD IMAGE 관련
-npm run ld
+npm run start
 
-# IMAGE DIFF 관련
+# IMAGE DIFF 관련 - 임시 확인 용도
 npm run diff
 ```
 

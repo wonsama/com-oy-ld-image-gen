@@ -1,11 +1,11 @@
 {
   "name": "com-oy-ld-image-gen",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "ESL IMAGE with LD",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "ld": "node ./src/ld/index.js",
+    "start": "node ./src/ld/index.js",
     "diff": "node ./src/diff/index.js"
   },
   "keywords": [],

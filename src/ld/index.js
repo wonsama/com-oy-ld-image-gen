@@ -51,7 +51,7 @@ async function init() {
     const data = article[0].data;
 
     // STEP 2. CREATE_IMAGE_DATA_XML
-    const xml = createLdXml(data);
+    const xml = createLdXml([data, data]); // 2in1 의 경우 동일한 데이터를 2번 사용하도록 처리
     fs.writeFileSync(TEMP_XML, xml, "utf-8");
 
     // STEP 3. CREATE_IMAGE
@@ -63,7 +63,7 @@ async function init() {
 
     // STEP 4. SAVE_IMAGE
     sharp(Buffer.from(res.image, "base64")).toFile(
-      `${LD_OUTPUT_ROOT}/ld/img/${TEST_PNG_PREFIX}-${articleId}.png`
+      `${LD_OUTPUT_ROOT}/img/${TEST_PNG_PREFIX}-${articleId}.png`
     );
     info(
       `save image ${TEST_PNG_PREFIX}-${articleId}.png - ${count}/${ARTICLE_IDS.length}`
