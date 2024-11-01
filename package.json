@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node ./src/ld/index.js",
-    "diff": "node ./src/diff/index.js"
+    "diff": "node ./src/diff/index.js",
+    "label": "node ./src/label/index.js"
   },
   "keywords": [],
   "author": "",

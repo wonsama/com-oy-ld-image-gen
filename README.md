@@ -31,10 +31,14 @@ N/A
 
 ```bash
 # LD IMAGE 관련
-npm run start
+`npm run start`
 
 # IMAGE DIFF 관련 - 임시 확인 용도
-npm run diff
+`npm run diff`
+
+# LABEL IMAGE 생성
+`npm run label [store] [label] [mode:dev|prd (default: dev)]`
+
 ```
 
 ## 5. 결과확인
@@ -46,5 +50,8 @@ npm run diff
 /output/ld/
 
 ## IMAGE DIFF 관련
+/output/diff/
+
+## LABEL IMAGE 관련
 /output/diff/
 ```

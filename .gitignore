@@ -141,3 +141,5 @@ output/diff/*
 output/ld/*.html
 output/ld/img/*
 !output/ld/img/.gitkeep
+output/label/img/*
+!output/label/img/.gitkeep
