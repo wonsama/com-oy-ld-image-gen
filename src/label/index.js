@@ -20,10 +20,23 @@ async function init() {
   }
 
   const store = param[2].toUpperCase();
-  const label = param[3];
+  let label = param[3];
   const mode = (param[4] || "dev").toUpperCase();
   const company = encodeURIComponent("올리브영");
   const AIMS_DASHBOARD_URL = process.env[`AIMS_URL_${mode}`];
+
+  // GET PRODUCT INFO
+  const resL = await sendGet(`${AIMS_DASHBOARD_URL}${DB_LABELS}`, {
+    company,
+    store,
+    articleId: label,
+  });
+  if (resL.labelList.length == 0) {
+    info(`label image not found by productId`);
+  } else {
+    // 상품코드로 준 경우 라벨 아이디를 전환
+    label = resL.labelList[0].labelCode;
+  }
 
   // GET LABEL IMAGE INFO
   const res = await sendGet(`${AIMS_DASHBOARD_URL}${DB_LABELS_DETAIL}`, {
